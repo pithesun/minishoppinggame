@@ -1,7 +1,3 @@
-// without server
-//상품 이미지와 텍스트 가져오기 -- No Server But Local
-
-
 
 function loadItems()
 {
@@ -12,7 +8,6 @@ function loadItems()
 function displayItems(items)
 {
     let container = document.querySelector(".items"); //not items
-    console.log(container)
     container.innerHTML = items.map((item) => createHTMLString(item)).join('');
 }
 
@@ -25,11 +20,35 @@ function createHTMLString(item)
     </li>`
 }
 
+function onButtonClick(event, items)
+{
+    let dataset = event.target.dataset;
+    let key = dataset.key;
+    let value = dataset.value;
+
+    if( key == null || value == null){
+        return null;
+    }
+    //console.log(items.filter((item) => (item[key] == value)))
+    displayItems(items.filter((item) => (item[key] == value)))
+}
+
+//register event listener(call back) to item
+function setEventListner(items){
+    let logo = document.querySelector(".logo");
+    let btn = document.querySelector(".buttons");
+
+    logo.addEventListener("click", () => displayItems(items));
+    
+    //이벤트 위임
+    btn.addEventListener("click", (event) => onButtonClick(event, items));
+}
+
 //main
 loadItems()
 .then( (items) => {
     displayItems(items);
-    //setEventListner(items);
+    setEventListner(items);
 })
 .catch(console.log)
 
@@ -37,10 +56,7 @@ loadItems()
 // sort by type and color 
 function setEventListner(items)
 {
-    let buttons = document.getElementsByTagName("ul")[0].getElementsByTagName("button");
-    buttons[0].onclick = function() {dpItembyColor("blue")};
-    buttons[1].onclick = function() {dpItembyColor("yellow")};
-    buttons[2].onclick = function() {dpItembyColor("pink")};
+    
 }
 
 class Item
