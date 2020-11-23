@@ -4,28 +4,25 @@
   --color-yellow: rgb(255, 215, 0);
   --color-pink: rgb(250, 50, 70);
   --color-white: rgb(255, 255, 255);
-
-  --contents-width: 300px;
 }
 
 body {
   background-color: var(--color-background);
-}
-.contents {
-  position: absolute;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  top: 10%;
-  left: 50%;
-  width: var(--contents-width);
-  transform: translateX(-50%);
+}
+.contents {
+  min-width: 300px;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .buttons button {
@@ -40,6 +37,11 @@ body {
   outline: none;
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
 .logo img,
 .buttons img {
   max-width: 100%;
@@ -47,12 +49,10 @@ body {
 
 .buttons .colorBtn {
   width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  font-size: 0.7em;
+  border-radius: 3px;
+  font-size: 1em;
   color: black;
-  font-weight: bold;
-  padding: 1.2em;
+  padding: 0.5rem;
 }
 
 .blue {
@@ -80,17 +80,16 @@ body {
   width: 100%;
   height: 20%;
   background-color: var(--color-white);
-  box-sizing: border-box;
-  margin-bottom: 0.8em;
+  margin-bottom: 0.5em;
   border-radius: 4px;
-  padding: 0.2em;
+  padding: 0.5em;
 }
 
 .item img {
   height: 90%;
 }
-.item span {
+.item .description {
   display: inline-block;
+  font-size: 0.5em;
   margin-left: 0.5em;
-  font-size: 1em;
 }
